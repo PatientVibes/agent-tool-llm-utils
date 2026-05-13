@@ -21,6 +21,7 @@ def test_is_transient_non_transient():
     assert not is_transient(ValueError("bad input"))
 
 
+@pytest.mark.asyncio
 async def test_retry_async_succeeds_first_try():
     async def factory():
         return 42
@@ -28,6 +29,7 @@ async def test_retry_async_succeeds_first_try():
     assert result == 42
 
 
+@pytest.mark.asyncio
 async def test_retry_async_retries_on_transient():
     attempts = {"count": 0}
 
@@ -42,6 +44,7 @@ async def test_retry_async_retries_on_transient():
     assert attempts["count"] == 2
 
 
+@pytest.mark.asyncio
 async def test_retry_async_raises_on_non_transient():
     async def factory():
         raise ValueError("permanent")

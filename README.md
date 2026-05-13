@@ -1,6 +1,6 @@
 # agent-tool-llm-utils
 
-Small reusable utilities for LangChain agent harnesses. Five helpers in one bundle so the repo-count stays small and the discovery story is simple.
+Small reusable utilities for LangChain agent harnesses. Six helpers in one bundle so the repo-count stays small and the discovery story is simple.
 
 ## Install
 

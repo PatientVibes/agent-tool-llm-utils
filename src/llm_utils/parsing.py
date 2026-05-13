@@ -9,7 +9,7 @@ import re
 from typing import Optional
 
 _FENCED_JSON = re.compile(r"```(?:json)?\s*(\{.*?\}|\[.*?\])\s*```", re.DOTALL)
-_BARE_JSON = re.compile(r"(\{.*\}|\[.*\])", re.DOTALL)
+_BARE_JSON = re.compile(r"(\{.*?\}|\[.*?\])", re.DOTALL)
 
 
 def extract_json(text: str) -> Optional[dict | list]:

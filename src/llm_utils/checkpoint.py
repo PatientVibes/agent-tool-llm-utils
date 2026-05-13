@@ -11,10 +11,14 @@ logger = logging.getLogger(__name__)
 
 
 def save_checkpoint(path: Path | None, data: dict[str, Any]) -> None:
-    """Write `data` as JSON to `path`, adding a `timestamp` key."""
+    """Write `data` as JSON to `path`, adding a `timestamp` key.
+
+    Creates parent directory if needed.
+    """
     if path is None:
         return
     try:
+        path.parent.mkdir(parents=True, exist_ok=True)
         out = {**data, "timestamp": time.time()}
         path.write_text(json.dumps(out, indent=2), encoding="utf-8")
     except Exception as e:

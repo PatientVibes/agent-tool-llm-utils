@@ -31,3 +31,12 @@ def test_save_none_path_noop():
 
 def test_load_none_path_empty():
     assert load_checkpoint(None) == {}
+
+
+def test_save_creates_parent_dir(tmp_path: Path):
+    """save_checkpoint should create parent dirs if absent."""
+    nested = tmp_path / "deeper" / "nested" / "ckpt.json"
+    save_checkpoint(nested, {"x": 1})
+    assert nested.exists()
+    loaded = load_checkpoint(nested)
+    assert loaded["x"] == 1

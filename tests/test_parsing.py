@@ -31,3 +31,11 @@ def test_invalid_returns_none():
 
 def test_empty_returns_none():
     assert extract_json("") is None
+
+
+def test_multi_span_returns_first():
+    """Bare-JSON regex must be non-greedy to handle multiple JSON spans."""
+    text = 'Some preamble {"meta": true} then payload {"result": 42} done.'
+    # Should match the first object, not span both
+    result = extract_json(text)
+    assert result == {"meta": True}
