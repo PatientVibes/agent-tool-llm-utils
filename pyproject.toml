@@ -1,0 +1,26 @@
+[project]
+name = "agent-tool-llm-utils"
+version = "0.1.0"
+description = "Reusable utilities for LangChain agent harnesses: retry-with-backoff, prompt-injection filter, JSON extraction from LLM responses, JSON checkpoint helpers."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Chris Moore" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["llm_utils*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
